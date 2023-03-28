@@ -8,6 +8,7 @@ import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.core.content.ContextCompat
 import com.example.ffmpegkittestapp.logic.TranscodeLogic
+import com.example.ffmpegkittestapp.screen.RootScreen
 import com.example.ffmpegkittestapp.screen.TranscodeScreen
 
 class MainActivity : ComponentActivity() {
@@ -18,10 +19,9 @@ class MainActivity : ComponentActivity() {
             Environment.DIRECTORY_MOVIES).first {
             it.exists()
         }
-        val logic = TranscodeLogic(baseDirectory.absolutePath)
 
         setContent {
-            TranscodeScreen(logic)
+            RootScreen(baseDirectory = baseDirectory.absolutePath)
         }
     }
 }
