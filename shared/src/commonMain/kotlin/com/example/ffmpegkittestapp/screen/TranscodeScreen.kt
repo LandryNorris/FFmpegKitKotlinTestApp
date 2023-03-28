@@ -19,21 +19,13 @@ internal fun TranscodeScreen(logic: TranscodeLogic) {
         session = logic.downloadFile()
         isDone = true
     }
-
-    MyApplicationTheme {
-        Surface(
-            modifier = Modifier.fillMaxSize(),
-            color = MaterialTheme.colors.background
-        ) {
-            if(isDone) {
-                Column {
-                    Text("File is ready!")
-                    session?.let { SessionView(it) }
-                }
-            } else {
-                Text("Downloading file...")
-            }
+    if(isDone) {
+        Column {
+            Text("File is ready!")
+            session?.let { SessionView(it) }
         }
+    } else {
+        Text("Downloading file...")
     }
 }
 
