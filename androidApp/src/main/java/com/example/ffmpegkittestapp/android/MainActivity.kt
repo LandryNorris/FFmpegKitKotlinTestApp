@@ -4,12 +4,8 @@ import android.os.Bundle
 import android.os.Environment
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.material.*
-import androidx.compose.runtime.*
 import androidx.core.content.ContextCompat
-import com.example.ffmpegkittestapp.logic.TranscodeLogic
-import com.example.ffmpegkittestapp.screen.RootScreen
-import com.example.ffmpegkittestapp.screen.TranscodeScreen
+import com.example.ffmpegkittestapp.MainApp
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,7 +17,7 @@ class MainActivity : ComponentActivity() {
         }
 
         setContent {
-            RootScreen(baseDirectory = baseDirectory.absolutePath)
+            MainApp(baseDirectory = baseDirectory.absolutePath)
         }
     }
 }

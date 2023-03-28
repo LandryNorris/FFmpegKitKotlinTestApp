@@ -9,7 +9,7 @@ import com.example.ffmpegkittestapp.logic.CommandLogic
 import com.example.ffmpegkittestapp.logic.TranscodeLogic
 
 @Composable
-fun RootScreen(baseDirectory: String) {
+internal fun RootScreen(baseDirectory: String) {
     val transcodeLogic = remember { TranscodeLogic(baseDirectory) }
     val commandLogic = remember { CommandLogic() }
 
@@ -24,7 +24,7 @@ fun RootScreen(baseDirectory: String) {
 }
 
 @Composable
-fun BottomNav(onItemSelected: (Int) -> Unit) {
+internal fun BottomNav(onItemSelected: (Int) -> Unit) {
     BottomNavigation {
         (0 until 2).forEach {
             BottomNavigationItem(label = { Text("Item $it") },

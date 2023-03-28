@@ -14,7 +14,7 @@ import androidx.compose.ui.Modifier
 import com.example.ffmpegkittestapp.logic.CommandLogic
 
 @Composable
-fun CommandScreen(logic: CommandLogic) {
+internal fun CommandScreen(logic: CommandLogic) {
     val state by logic.state.collectAsState()
 
     Column {

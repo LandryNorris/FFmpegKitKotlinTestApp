@@ -1,16 +1,23 @@
 PODS:
+  - ffmpeg-kit-ios-full (5.1)
   - shared (1.0)
 
 DEPENDENCIES:
+  - ffmpeg-kit-ios-full (~> 5.1)
   - shared (from `../shared`)
+
+SPEC REPOS:
+  trunk:
+    - ffmpeg-kit-ios-full
 
 EXTERNAL SOURCES:
   shared:
     :path: "../shared"
 
 SPEC CHECKSUMS:
+  ffmpeg-kit-ios-full: 4a02624db22a9ea1e92e3b6707bffe67c76f4aad
   shared: 2d3b24a8fe27b7d9e65b8d075a9672fbc6a1aa10
 
-PODFILE CHECKSUM: f282da88f39e69507b0a255187c8a6b644477756
+PODFILE CHECKSUM: ebfa84bee2fcdce46c42484c0c7cc2c65a7aab83
 
 COCOAPODS: 1.11.3

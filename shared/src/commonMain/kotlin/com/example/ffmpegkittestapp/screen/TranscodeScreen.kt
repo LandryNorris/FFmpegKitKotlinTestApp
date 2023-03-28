@@ -12,7 +12,7 @@ import com.example.ffmpegkittestapp.logic.TranscodeLogic
 import com.example.ffmpegkittestapp.theme.MyApplicationTheme
 
 @Composable
-fun TranscodeScreen(logic: TranscodeLogic) {
+internal fun TranscodeScreen(logic: TranscodeLogic) {
     var isDone by remember { mutableStateOf(false) }
     var session by remember { mutableStateOf<FFmpegSession?>(null) }
     LaunchedEffect(Unit) {
