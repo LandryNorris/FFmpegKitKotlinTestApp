@@ -13,7 +13,7 @@ class CommandLogic {
     private val context = CoroutineScope(Dispatchers.Default)
 
     fun setCommandText(newText: String) {
-        state.update { it.copy(commandText = newText) }
+        state.update { it.copy(commandText = newText.lowercase()) }
     }
 
     fun execute() {
@@ -22,13 +22,14 @@ class CommandLogic {
         context.launch {
             val session = FFmpegKit.executeBlocking(currentState.commandText, logCallback = { log ->
                 appendText(log.message)
+                println("Got log: ${log.message}")
             }, statisticsCallback = {
                 println("Got statistics: $it")
             })
 
             if(session.returnCode == null || !session.returnCode!!.isSuccess) {
                 state.update { it.copy(output = "Command failed with error " +
-                        "${session.returnCode!!.value}\n") }
+                        "${session.returnCode?.value}\n") }
             }
         }
     }
