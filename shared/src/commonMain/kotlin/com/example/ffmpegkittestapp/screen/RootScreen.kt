@@ -8,6 +8,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import com.example.ffmpegkittestapp.logic.CommandLogic
+import com.example.ffmpegkittestapp.logic.ProbeLogic
 import com.example.ffmpegkittestapp.logic.TranscodeLogic
 import com.example.ffmpegkittestapp.theme.MyApplicationTheme
 
@@ -15,6 +16,7 @@ import com.example.ffmpegkittestapp.theme.MyApplicationTheme
 internal fun RootScreen(baseDirectory: String) {
     val transcodeLogic = remember { TranscodeLogic(baseDirectory) }
     val commandLogic = remember { CommandLogic() }
+    val probeLogic = remember { ProbeLogic() }
 
     var selectedIndex by remember { mutableStateOf(0) }
 
@@ -29,6 +31,7 @@ internal fun RootScreen(baseDirectory: String) {
                         when(selectedIndex) {
                             0 -> CommandScreen(commandLogic)
                             1 -> TranscodeScreen(transcodeLogic)
+                            2 -> ProbeScreen(probeLogic)
                         }
                     }
                     BottomNav { selectedIndex = it }
@@ -41,7 +44,7 @@ internal fun RootScreen(baseDirectory: String) {
 @Composable
 internal fun BottomNav(onItemSelected: (Int) -> Unit) {
     BottomNavigation {
-        (0 until 2).forEach {
+        (0 until 3).forEach {
             BottomNavigationItem(label = { Text("Item $it") },
                 onClick = { onItemSelected(it) },
                 icon = {},
