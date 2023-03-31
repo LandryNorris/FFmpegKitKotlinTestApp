@@ -32,8 +32,9 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation("io.github.landrynorris:ffmpegkit:0.0.15")
+                implementation("io.github.landrynorris:ffmpegkit:0.0.20")
                 implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.4.0")
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.0")
 
                 implementation(compose.runtime)
                 implementation(compose.foundation)
