@@ -19,7 +19,7 @@ class ProbeLogic {
 
         CoroutineScope(Dispatchers.Default).launch {
             println("Probing $url")
-            val info = FFprobeKit.getMediaInformation(url, 60000)
+            val info = FFprobeKit.getMediaInformation(path = url, timeout = 60000)
             println("Info is $info")
         }
     }

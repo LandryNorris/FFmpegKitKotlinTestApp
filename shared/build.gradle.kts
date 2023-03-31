@@ -3,6 +3,7 @@ plugins {
     kotlin("native.cocoapods")
     id("com.android.library")
     id("org.jetbrains.compose")
+    id("dev.icerock.mobile.multiplatform-resources")
 }
 
 kotlin {
@@ -35,6 +36,9 @@ kotlin {
                 implementation("io.github.landrynorris:ffmpegkit:0.0.20")
                 implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.4.0")
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.0")
+                implementation("com.squareup.okio:okio:3.3.0")
+                api("dev.icerock.moko:resources:0.21.1")
+                api("dev.icerock.moko:resources-compose:0.21.1")
 
                 implementation(compose.runtime)
                 implementation(compose.foundation)
@@ -47,7 +51,11 @@ kotlin {
                 implementation(kotlin("test"))
             }
         }
-        val androidMain by getting
+        val androidMain by getting {
+            dependencies {
+                implementation("com.google.android.exoplayer:exoplayer:2.18.5")
+            }
+        }
         val androidUnitTest by getting
         val iosX64Main by getting
         val iosArm64Main by getting
@@ -77,4 +85,9 @@ android {
         minSdk = 24
         targetSdk = 33
     }
+}
+
+multiplatformResources {
+    multiplatformResourcesPackage = "com.example.ffmpegkittestapp.resources"
+    //multiplatformResourcesClassName = "Resources"
 }
