@@ -14,7 +14,7 @@ import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.ui.StyledPlayerView
 
 @Composable
-internal actual fun VideoPlayer(url: String) {
+internal actual fun VideoPlayer(modifier: Modifier, url: String) {
     val context = LocalContext.current
     val exoPlayer = remember {
         ExoPlayer.Builder(context).build().apply {
@@ -31,7 +31,7 @@ internal actual fun VideoPlayer(url: String) {
         }
     }
 
-    AndroidView(modifier = Modifier.fillMaxWidth(), factory = {
+    AndroidView(modifier = modifier, factory = {
         StyledPlayerView(context).apply {
             player = exoPlayer
             layoutParams = FrameLayout.LayoutParams(

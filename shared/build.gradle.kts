@@ -14,9 +14,13 @@ kotlin {
             }
         }
     }
-    iosX64()
-    iosArm64()
-    iosSimulatorArm64()
+
+    listOf(iosX64(),
+        iosArm64(),
+        iosSimulatorArm64()).forEach {
+        val main by it.compilations.getting
+        val observer by main.cinterops.creating
+    }
 
     cocoapods {
         summary = "Some description for the Shared Module"
@@ -33,7 +37,7 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation("io.github.landrynorris:ffmpegkit:0.0.20")
+                implementation("io.github.landrynorris:ffmpegkit:0.0.21")
                 implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.4.0")
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.0")
                 implementation("com.squareup.okio:okio:3.3.0")

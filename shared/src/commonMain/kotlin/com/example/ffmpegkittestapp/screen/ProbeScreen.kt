@@ -14,7 +14,7 @@ import androidx.compose.ui.Modifier
 import com.example.ffmpegkittestapp.logic.ProbeLogic
 
 @Composable
-fun ProbeScreen(logic: ProbeLogic) {
+internal fun ProbeScreen(logic: ProbeLogic) {
     val state by logic.state.collectAsState()
 
     Column(modifier = Modifier.fillMaxSize()) {

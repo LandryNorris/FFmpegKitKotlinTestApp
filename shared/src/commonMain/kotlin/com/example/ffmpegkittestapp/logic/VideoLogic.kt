@@ -22,9 +22,9 @@ class VideoLogic(val baseDirectory: Path) {
         state.update { it.copy(isEncoding = true) }
         CoroutineScope(Dispatchers.Default).launch {
             Encoding.encodeFiles(baseDirectory, output, current.codec,
-                pixelFormat(current.codec), customOptions(current.codec)) {
+                pixelFormat(current.codec), customOptions(current.codec)) { stats ->
                 val videoDuration = 9000 //hardcoded
-                val progress = it.time*100.0/videoDuration
+                val progress = stats.time*100.0/videoDuration
                 state.update { it.copy(progress = progress) }
             }
             state.update { it.copy(videoFile = output, isEncoding = false) }
@@ -55,6 +55,6 @@ class VideoLogic(val baseDirectory: Path) {
 private val codecs = listOf("libx264", "libopenh264", "libx265", "libxvid", "libvpx",
     "libvpx-vp9", "libaom-av1", "libkvazaar", "libtheora", "hap")
 
-data class VideoState(val isPlaying: Boolean = false, val codec: String = "libvpx",
+data class VideoState(val isPlaying: Boolean = false, val codec: String = "libx264",
                       val isEncoding: Boolean = false, val progress: Double = 0.0,
                       val videoFile: Path? = null)
