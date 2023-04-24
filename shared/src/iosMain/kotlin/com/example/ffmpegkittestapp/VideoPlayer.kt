@@ -3,7 +3,7 @@ package com.example.ffmpegkittestapp
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.interop.UIKitInteropView
+import androidx.compose.ui.interop.UIKitView
 import kotlinx.cinterop.COpaquePointer
 import observer.ObserverProtocol
 import platform.AVFoundation.*
@@ -37,7 +37,7 @@ internal actual fun VideoPlayer(modifier: Modifier, url: String) {
         }
     }
 
-    UIKitInteropView(modifier = modifier, factory = {
+    UIKitView(modifier = modifier, factory = {
         playerView = UIView().apply {
             backgroundColor = blackColor
         }
@@ -46,7 +46,7 @@ internal actual fun VideoPlayer(modifier: Modifier, url: String) {
         playerView?.layer?.addSublayer(playerLayer!!)
 
         playerView!!
-    }, dispose = { playerView = null })
+    }, onRelease = { playerView = null })
 }
 
 class StatusObserver: NSObject(), ObserverProtocol {
